@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:21:15 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/17 17:04:37 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/17 18:38:36 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int ft_highestinupperhalf(t_lst **stack_b, int highestcontent, int schalter)
 	return (0);
 }
 void	ft_clean_b(t_lst **stack_a, t_lst **stack_b) //int groupbeginning, int groupsize)
-{																						//hier bin ich
+{
 	int		highestcontent;
 	int		i = 0;
 	int		schalter;
@@ -124,7 +124,7 @@ void	sort500(t_lst **stack_a, int listsize)
 	
 	imaginary = NULL;
 	stack_b = &imaginary;
-	groupsize = 20;
+	groupsize = 62;
 	groupbeginning = 1;
 	movements = listsize / groupsize;
 	while (movements-- >= 0)
@@ -132,44 +132,8 @@ void	sort500(t_lst **stack_a, int listsize)
 		ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
 		groupbeginning += groupsize;
 	}
-	// ft_printlst(*stack_b);
-	// movements = listsize / groupsize;
-	// while (movements-- >= 0)
-	// {
-	// 	ft_clean_b(stack_a, stack_b, groupbeginning, groupsize);
-	// 	groupbeginning += groupsize;
-	// }
 	if (ft_listsize(*stack_b) < groupsize)
 		groupsize = ft_listsize(*stack_b);
 	ft_clean_b(stack_a, stack_b);
 	ft_deletelst(stack_b);
 }
-
-
-//put first 25 in B and sort them
-//put them back
-//put next 25 and sort them
-
-// void	ft_clean_b(t_lst **stack_a, t_lst **stack_b, int smallestcontent, int groupsize)
-// {
-// 	t_lst *node_b;
-// 	node_b = *stack_b;
-	
-// 	while (ft_listsize(*stack_b) > 0)
-// 	{
-// 		if (node_b->content == smallestcontent)
-// 		{
-// 			node_b->state = 1;
-// 			node_b = node_b->next;
-// 			pa(stack_b, stack_a);
-// 			ra(stack_a);
-// 			smallestcontent++;
-// 			groupsize--;
-// 		}
-// 		else
-// 		{
-// 				node_b = node_b->next;
-// 				rb(stack_b);
-// 		}
-// 	}
-// }

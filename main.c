@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 15:34:10 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:57:07 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ t_lst	*ft_createlst(t_lst **lstbegin, char **argv)
 		n = 0;
 		s = ft_split(argv[i], ' ');
 		if (!s[0])
+		{
 			return (stop(lstbegin), ft_freedoublepointer(s), NULL);
+		}
 		if (!node)
 		{
 			if (ft_wronginput(node, s[n]) == 0)
@@ -84,20 +86,39 @@ t_lst	*ft_createlst(t_lst **lstbegin, char **argv)
 	return (*lstbegin);
 }
 
+int	ft_issorted(t_lst **lst)
+{
+	t_lst *node;
+	
+	node = *lst;
+	while (node->next != NULL)
+	{
+		if (node->content > node->next->content)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
+
 int	main (int argc, char **argv)
 {
 	t_lst *lst;
 
 	lst = NULL;
-	int		listsize;
-	if (argc < 3)
+	int	listsize;
+	// ft_printf("%d\n", argc);
+	if (argc < 2)
 		return (0);
+	// if (argc == 2 && ft_isdigit(ft_atoi((ft_split(argv[1], ' '))[0])))	//do i need it?
+	// 	return (0);
 	lst = ft_createlst(&lst, argv);
 		//ft_printlst(lst);
 	if (!lst)
 		return (0);
 	ft_assignpositivenumbers(&lst);
 	listsize = ft_listsize(lst);
+	if (ft_listsize(lst) == 1 || ft_issorted(&lst))
+		return (ft_deletelst(&lst), 0);
 		//ft_printf("%d\n", listsize);
 	if (listsize <= 2)
 		sort2(&lst);
@@ -108,7 +129,7 @@ int	main (int argc, char **argv)
 	else if (listsize <= 500)
 		sort500(&lst, listsize);
 		//ft_printf("---------\nFINAL:\n");
-	//	ft_printlst(lst);
+	//ft_printlst(lst);
 		//system("leaks push_swap");
 	return (ft_deletelst(&lst), 0);
 }

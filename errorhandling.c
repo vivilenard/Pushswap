@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:24 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/17 10:40:34 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:29:12 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	stop(t_lst **lst)
 {
 	ft_deletelst(lst);
-	ft_printf("error\n");
+	ft_putstr_fd("Error\n", 2);
 	
 }
 
@@ -40,7 +40,7 @@ int	ft_nonumber(char *s)
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] == '-' || s[i] == '+')
+		if (s[i] == '-' || s[i] == '+')
 			i++;
 		if (!ft_isdigit(s[i]))
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/17 17:14:27 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:34:10 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	main (int argc, char **argv)
 	else if (listsize <= 500)
 		sort500(&lst, listsize);
 		//ft_printf("---------\nFINAL:\n");
-		//ft_printlst(lst);
+	//	ft_printlst(lst);
 		//system("leaks push_swap");
 	return (ft_deletelst(&lst), 0);
 }

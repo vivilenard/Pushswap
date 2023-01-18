@@ -49,3 +49,12 @@
 			rb(stack_b);
 		}
 	}
+
+		// while (movements-- >= 0)
+	// {
+	// 	if (movements == -1)
+	// 		groupsize = ft_listsize(*stack_a) - 3;
+	// 	ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
+	// 	groupbeginning += groupsize;
+	// }
+	movements = listsize / groupsize;  // if listsize % groupsize == 0 (no rest) -> movements -= 1;

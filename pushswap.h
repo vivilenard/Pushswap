@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:33:52 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/13 14:28:50 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:42:21 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 # define PUSHSWAP_H
 
-#include "libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_lst
 {
-	int			content;
-	int			value;
-	int			state;
+	int				content;
+	int				value;
 	struct s_lst	*next;
 }				t_lst;
 
 void	sort2(t_lst **ptr);
 void	sort3(t_lst **ptr);
 void	sort5(t_lst **ptr);
-void	sort500(t_lst **ptr, int listsize);
+void	sort500(t_lst **ptr);
 int		one(t_lst *lst);
 int		two(t_lst *lst);
 int		three(t_lst *lst);

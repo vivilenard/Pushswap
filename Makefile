@@ -6,7 +6,7 @@
 #    By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 15:04:49 by vlenard           #+#    #+#              #
-#    Updated: 2023/01/13 11:25:29 by vlenard          ###   ########.fr        #
+#    Updated: 2023/01/18 21:09:11 by vlenard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ $(NAME): $(LIBFT) $(OBJS)
 $(LIBFT): 
 		cd libft && make && make clean
 n:
-		norminette $(SRC)
+		norminette $(SRC) pushswap.h
 v:
 		./visualizer/build/bin/visualizer
 clean :

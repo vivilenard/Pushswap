@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:36:03 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/13 14:44:42 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:38:22 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ t_lst	*ft_newlist(char *content)
 
 void	ft_lstaddback(t_lst *lst, char *content)
 {
-	t_lst *new;
+	t_lst	*new;
+
 	new = ft_newlist(content);
 	lst->next = new;
 }
 
-t_lst *ft_lastlst(t_lst *begin)
+t_lst	*ft_lastlst(t_lst *begin)
 {
-	t_lst *lst;
+	t_lst	*lst;
+
 	lst = begin;
 	if (!lst)
 		return (NULL);
@@ -55,9 +57,10 @@ int	ft_listsize(t_lst *lst)
 	return (len);
 }
 
-t_lst *ft_onebeforelastlst(t_lst *begin)
+t_lst	*ft_onebeforelastlst(t_lst *begin)
 {
-	t_lst *lst;
+	t_lst	*lst;
+
 	lst = begin;
 	if (!lst || ft_listsize(lst) < 2)
 		return (NULL);
@@ -66,12 +69,12 @@ t_lst *ft_onebeforelastlst(t_lst *begin)
 	return (lst);
 }
 
-void ft_printlst(t_lst *lst)
+void	ft_printlst(t_lst *lst)
 {
 	ft_printf("---------\n");
 	while (lst)
 	{
-		ft_printf("_%d_ (%d) (v: %d)\n", lst->content, lst->value, lst->state);
+		ft_printf("_%d_ (%d)\n", lst->content, lst->value);
 		lst = lst->next;
 	}
 	ft_printf("---------\n");

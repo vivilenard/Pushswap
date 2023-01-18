@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:26:55 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 20:59:08 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:26:37 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	sort2(t_lst **lst)
 	if (one(*lst) > two(*lst))
 		sa(lst);
 }
+
 void	sort3(t_lst **lst)
 {
-	if ((one(*lst) > two(*lst) && 
-		(two(*lst) > three(*lst) || three(*lst) > one(*lst))))
+	if (one(*lst) > two(*lst)
+		&& (two(*lst) > three(*lst) || three(*lst) > one(*lst)))
 		sa(lst);
 	if (one(*lst) < two(*lst) && one(*lst) < three(*lst)
 		&& two(*lst) > three(*lst))
@@ -34,6 +35,7 @@ void	sort3(t_lst **lst)
 void	ft_reduceto3(t_lst **stack_a, t_lst **stack_b)
 {
 	int	i;
+
 	while (ft_listsize(*stack_a) > 3)
 	{
 		i = placeoflowestvalue(*stack_a);
@@ -51,13 +53,14 @@ void	ft_reduceto3(t_lst **stack_a, t_lst **stack_b)
 		pb(stack_a, stack_b);
 	}
 }
+
 void	sort5(t_lst **stack_a)
 {
 	t_lst	*imaginary;
 	t_lst	**stack_b;
-	
+
 	imaginary = NULL;
-	stack_b = &imaginary;	//imaginary because it will not be used; the next operation will set the pointer of stack_b to another node and continue without imaginary
+	stack_b = &imaginary;
 	ft_reduceto3(stack_a, stack_b);
 	sort3(stack_a);
 	pa(stack_b, stack_a);

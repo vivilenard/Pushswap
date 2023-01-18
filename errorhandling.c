@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:24 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 20:29:12 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:10:16 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@ void	stop(t_lst **lst)
 {
 	ft_deletelst(lst);
 	ft_putstr_fd("Error\n", 2);
-	
 }
 
-int	ft_samevalue(t_lst *lst, char *s)  //funktioniert nicht so wie es sollte
+int	ft_samevalue(t_lst *lst, char *s)
 {
-	t_lst *node;
+	t_lst	*node;
+
 	node = lst;
 	while (node != NULL && ft_listsize(lst) >= 1)
 	{
-		//	ft_printf("node: %d, s %d", node->value, ft_atoi(s));
 		if (node->value == ft_atoi(s))
 			return (0);
 		node = node->next;
@@ -48,6 +47,7 @@ int	ft_nonumber(char *s)
 	}
 	return (1);
 }
+
 int	ft_wronginput(t_lst *lst, char *s)
 {
 	if (!s)
@@ -67,4 +67,3 @@ int	ft_wronginput(t_lst *lst, char *s)
 	}	
 	return (1);
 }
-

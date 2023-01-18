@@ -6,13 +6,14 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:21:15 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 20:01:00 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:41:29 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void ft_group_to_b(t_lst **stack_a, t_lst **stack_b, int groupbeginning, int groupsize)
+void	ft_group_to_b(t_lst **stack_a,
+	t_lst **stack_b, int groupstart, int groupsize)
 {
 	t_lst	*node_a;
 	int		listsize_a;
@@ -20,10 +21,11 @@ void ft_group_to_b(t_lst **stack_a, t_lst **stack_b, int groupbeginning, int gro
 
 	listsize_a = ft_listsize(*stack_a);
 	node_a = *stack_a;
-	meridian = groupbeginning + groupsize / 2;
+	meridian = groupstart + groupsize / 2;
 	while (listsize_a-- > 0)
 	{
-		if (node_a->content >= groupbeginning && node_a->content < groupbeginning + groupsize)
+		if (node_a->content >= groupstart
+			&& node_a->content < groupstart + groupsize)
 		{
 			if (node_a->content >= meridian)
 			{
@@ -36,8 +38,6 @@ void ft_group_to_b(t_lst **stack_a, t_lst **stack_b, int groupbeginning, int gro
 				pb(stack_a, stack_b);
 				rb(stack_b);
 			}
-			// if (ft_listsize(*stack_b) >= 2 && (*stack_b)->content < (*stack_b)->next->content)   //leave it or use it? CORRUPTED
-			// 	sb(stack_b);
 		}
 		else
 		{
@@ -63,14 +63,14 @@ int	ft_ishighval(t_lst *node, int highestcontent, int *schalter)
 		return (0);
 }
 
-int ft_highestinupperhalf(t_lst **stack_b, int highestcontent, int schalter)
+int	ft_highestinupperhalf(t_lst **stack_b, int highestcontent, int schalter)
 {
-	int	sizeupperhalf;
-	t_lst *node;
+	int		sizeupperhalf;
+	t_lst	*node;
 
 	node = *stack_b;
 	sizeupperhalf = ft_listsize(*stack_b) / 2;
-	while(sizeupperhalf-- && node)
+	while (sizeupperhalf-- && node)
 	{
 		if (ft_ishighval(node, highestcontent, &schalter))
 			return (1);
@@ -78,12 +78,14 @@ int ft_highestinupperhalf(t_lst **stack_b, int highestcontent, int schalter)
 	}
 	return (0);
 }
+
 void	ft_clean_b(t_lst **stack_a, t_lst **stack_b)
 {
 	int		highestcontent;
-	int		i = 0;
 	int		schalter;
-	
+	int		i;
+
+	i = 0;
 	schalter = -1;
 	highestcontent = ft_listsize(*stack_b);
 	while (ft_listsize(*stack_b) > 0)
@@ -109,15 +111,14 @@ void	ft_clean_b(t_lst **stack_a, t_lst **stack_b)
 	}
 }
 
-void	sort500(t_lst **stack_a, int listsize)
+void	sort500(t_lst **stack_a)
 {
 	t_lst	*imaginary;
 	t_lst	**stack_b;
 	int		groupsize;
-	int		groupbeginning;
-	int amount;
-	int		movements;
-	
+	int		groupstart;
+	int		amount;
+
 	imaginary = NULL;
 	stack_b = &imaginary;
 	groupsize = 20;
@@ -127,24 +128,16 @@ void	sort500(t_lst **stack_a, int listsize)
 		amount = 500;
 		groupsize = 62;
 	}
-	groupbeginning = 1;
-	movements = listsize / groupsize;  // if listsize % groupsize == 0 (no rest) -> movements -= 1;
+	groupstart = 1;
 	while (ft_listsize(*stack_a) > 3)
 	{
 		if (amount == 500)
 			groupsize -= 3;
 		if (ft_listsize(*stack_a) <= groupsize)
 			groupsize = ft_listsize(*stack_a) - 3;
-		ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
-		groupbeginning += groupsize;
+		ft_group_to_b(stack_a, stack_b, groupstart, groupsize);
+		groupstart += groupsize;
 	}
-	// while (movements-- >= 0)
-	// {
-	// 	if (movements == -1)
-	// 		groupsize = ft_listsize(*stack_a) - 3;
-	// 	ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
-	// 	groupbeginning += groupsize;
-	// }
 	if (ft_listsize(*stack_a) == 3)
 		sort3(stack_a);
 	if (ft_listsize(*stack_a) == 2)

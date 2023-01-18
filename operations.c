@@ -6,40 +6,41 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:03:02 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/13 10:54:32 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 21:40:32 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void rotate(t_lst **lst)
+void	rotate(t_lst **lst)
 {
+	t_lst	*second;
+
 	if (!lst || !(*lst)->next)
 		return ;
-	t_lst *second;
 	second = (*lst)->next;
 	ft_lastlst(*lst)->next = *lst;
 	(*lst)->next = NULL;
 	*lst = second;
 }
 
-void ra(t_lst **lst)
+void	ra(t_lst **lst)
 {
 	rotate(lst);
 	ft_printf("ra\n");
 }
 
-void rb(t_lst **lst)
+void	rb(t_lst **lst)
 {
 	rotate(lst);
 	ft_printf("rb\n");
 }
 
-void reverserotate(t_lst **lst)
+void	reverserotate(t_lst **lst)
 {
-	t_lst *front;
-	t_lst *onebeforelast;
-	
+	t_lst	*front;
+	t_lst	*onebeforelast;
+
 	if (!lst || !(*lst)->next)
 		return ;
 	front = ft_lastlst(*lst);
@@ -49,21 +50,21 @@ void reverserotate(t_lst **lst)
 	*lst = front;
 }
 
-void rra(t_lst **lst)
+void	rra(t_lst **lst)
 {
 	reverserotate(lst);
 	ft_printf("rra\n");
 }
 
-void rrb(t_lst **lst)
+void	rrb(t_lst **lst)
 {
 	reverserotate(lst);
 	ft_printf("rrb\n");
 }
 
-void push(t_lst **containing, t_lst **recieving)
+void	push(t_lst **containing, t_lst **recieving)
 {
-	t_lst *node_to_shift;
+	t_lst	*node_to_shift;
 
 	if (!containing)
 		return ;
@@ -81,22 +82,22 @@ void push(t_lst **containing, t_lst **recieving)
 	}
 }
 
-void pb(t_lst **stack_a, t_lst **stack_b)
+void	pb(t_lst **stack_a, t_lst **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_printf("pb\n");	
+	ft_printf("pb\n");
 }
 
-void pa(t_lst **stack_b, t_lst **stack_a)
+void	pa(t_lst **stack_b, t_lst **stack_a)
 {
 	push(stack_b, stack_a);
-	ft_printf("pa\n");	
+	ft_printf("pa\n");
 }
 
-void swap(t_lst **lst)
+void	swap(t_lst **lst)
 {
-	t_lst *front;
-	t_lst *end;
+	t_lst	*front;
+	t_lst	*end;
 
 	front = (*lst)->next;
 	end = front->next;
@@ -105,13 +106,13 @@ void swap(t_lst **lst)
 	*lst = front;
 }
 
-void sa(t_lst **lst)
+void	sa(t_lst **lst)
 {
 	swap(lst);
 	ft_printf("sa\n");
 }
 
-void sb(t_lst **lst)
+void	sb(t_lst **lst)
 {
 	swap(lst);
 	ft_printf("sa\n");

@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:21:15 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 19:41:48 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:01:00 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,23 +115,36 @@ void	sort500(t_lst **stack_a, int listsize)
 	t_lst	**stack_b;
 	int		groupsize;
 	int		groupbeginning;
+	int amount;
 	int		movements;
 	
 	imaginary = NULL;
 	stack_b = &imaginary;
-	if (ft_listsize(*stack_b) > 100)
+	groupsize = 20;
+	amount = 100;
+	if (ft_listsize(*stack_a) > 100)
+	{
+		amount = 500;
 		groupsize = 62;
-	else
-		groupsize = 20;
+	}
 	groupbeginning = 1;
 	movements = listsize / groupsize;  // if listsize % groupsize == 0 (no rest) -> movements -= 1;
-	while (movements-- >= 0)
+	while (ft_listsize(*stack_a) > 3)
 	{
-		if (movements == -1)
+		if (amount == 500)
+			groupsize -= 3;
+		if (ft_listsize(*stack_a) <= groupsize)
 			groupsize = ft_listsize(*stack_a) - 3;
 		ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
 		groupbeginning += groupsize;
 	}
+	// while (movements-- >= 0)
+	// {
+	// 	if (movements == -1)
+	// 		groupsize = ft_listsize(*stack_a) - 3;
+	// 	ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
+	// 	groupbeginning += groupsize;
+	// }
 	if (ft_listsize(*stack_a) == 3)
 		sort3(stack_a);
 	if (ft_listsize(*stack_a) == 2)

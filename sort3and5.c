@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:26:55 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/11 14:27:32 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:59:08 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	sort5(t_lst **stack_a)
 	stack_b = &imaginary;	//imaginary because it will not be used; the next operation will set the pointer of stack_b to another node and continue without imaginary
 	ft_reduceto3(stack_a, stack_b);
 	sort3(stack_a);
-	pb(stack_b, stack_a);
+	pa(stack_b, stack_a);
 	if (*stack_b)
-		pb(stack_b, stack_a);
+		pa(stack_b, stack_a);
 	ft_deletelst(stack_b);
 }

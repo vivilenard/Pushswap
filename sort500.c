@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:21:15 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 15:35:19 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/18 19:41:48 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void ft_group_to_b(t_lst **stack_a, t_lst **stack_b, int groupbeginning, int gro
 				pb(stack_a, stack_b);
 				rb(stack_b);
 			}
-			// if (ft_listsize(*stack_b) >= 2 && (*stack_b)->content < (*stack_b)->next->content)
+			// if (ft_listsize(*stack_b) >= 2 && (*stack_b)->content < (*stack_b)->next->content)   //leave it or use it? CORRUPTED
 			// 	sb(stack_b);
 		}
 		else
@@ -78,7 +78,7 @@ int ft_highestinupperhalf(t_lst **stack_b, int highestcontent, int schalter)
 	}
 	return (0);
 }
-void	ft_clean_b(t_lst **stack_a, t_lst **stack_b) //int groupbeginning, int groupsize)
+void	ft_clean_b(t_lst **stack_a, t_lst **stack_b)
 {
 	int		highestcontent;
 	int		i = 0;
@@ -86,23 +86,17 @@ void	ft_clean_b(t_lst **stack_a, t_lst **stack_b) //int groupbeginning, int grou
 	
 	schalter = -1;
 	highestcontent = ft_listsize(*stack_b);
-			//ft_printlst(*stack_b);
-		// ft_printf("GB %d\nGZ %d\nHighestc %d\n", groupbeginning, groupsize, highestcontent);
 	while (ft_listsize(*stack_b) > 0)
 	{
 		if (ft_ishighval(*stack_b, highestcontent, &schalter))
 		{
 			pa(stack_b, stack_a);
-					//ft_printlst(*stack_b);
-					//ft_printlst(*stack_a);
 			highestcontent--;
 		}
 		else if (ft_ishighval(*stack_b, highestcontent, &schalter))
 		{
 			rrb(stack_b);
 			pa(stack_b, stack_a);
-					//ft_printlst(*stack_b);
-					//ft_printlst(*stack_a);
 			highestcontent--;
 		}
 		else if (ft_highestinupperhalf(stack_b, highestcontent, schalter))
@@ -112,7 +106,6 @@ void	ft_clean_b(t_lst **stack_a, t_lst **stack_b) //int groupbeginning, int grou
 		if ((ft_listsize(*stack_a) > 1) && (*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
 		i++;
-			
 	}
 }
 
@@ -126,30 +119,23 @@ void	sort500(t_lst **stack_a, int listsize)
 	
 	imaginary = NULL;
 	stack_b = &imaginary;
-	groupsize = 62;
+	if (ft_listsize(*stack_b) > 100)
+		groupsize = 62;
+	else
+		groupsize = 20;
 	groupbeginning = 1;
 	movements = listsize / groupsize;  // if listsize % groupsize == 0 (no rest) -> movements -= 1;
 	while (movements-- >= 0)
 	{
-			//ft_printf("Movements %d\n", movements);
-		if (movements == -1) //&& ft_listsize(*stack_a) >= 3)
-		{
-				//ft_printf("GS bef%d\nLS %d\n", groupsize, ft_listsize(*stack_a));
+		if (movements == -1)
 			groupsize = ft_listsize(*stack_a) - 3;
-			// if (groupsize <= 0)
-			// 	break;
-				//ft_printf("GS %d\n", groupsize);
-				//ft_printlst(*stack_a);
-		}
 		ft_group_to_b(stack_a, stack_b, groupbeginning, groupsize);
 		groupbeginning += groupsize;
 	}
-	//ft_printlst(*stack_a);
 	if (ft_listsize(*stack_a) == 3)
 		sort3(stack_a);
 	if (ft_listsize(*stack_a) == 2)
 		sort2(stack_a);
-			//ft_printlst(*stack_a);
 	if (ft_listsize(*stack_b) < groupsize)
 		groupsize = ft_listsize(*stack_b);
 	ft_clean_b(stack_a, stack_b);

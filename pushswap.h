@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:33:52 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 21:42:21 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 11:53:01 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ typedef struct s_lst
 }				t_lst;
 
 void	sort2(t_lst **ptr);
-void	sort3(t_lst **ptr);
-void	sort5(t_lst **ptr);
-void	sort500(t_lst **ptr);
+void	sort3(t_lst **ptr, int listsize);
+void	sort5(t_lst **ptr, t_lst **ptr_b, int listsize);
+void	sort500(t_lst **ptr_a, t_lst **ptr_b, int listsize, int groupsize);
 int		one(t_lst *lst);
 int		two(t_lst *lst);
 int		three(t_lst *lst);
 void	ft_printlst(t_lst *lst);
 int		ft_listsize(t_lst *lst);
 t_lst	*ft_newlist(char *content);
-void	ft_lstaddback(t_lst *lst, char *content);
+t_lst	*ft_lstaddback(t_lst *lst, char *content);
 t_lst	*ft_lastlst(t_lst *lst);
 t_lst	*ft_onebeforelastlst(t_lst *begin);
 t_lst	*ft_smallestvalue(t_lst **lst);
@@ -56,6 +56,6 @@ void	stop(t_lst **lst);
 int		ft_samevalue(t_lst *lst, char *s);
 int		ft_nonumber(char *s);
 int		ft_wronginput(t_lst *lst, char *s);
-t_lst	*ft_createlst(t_lst **lstbegin, char **argv);
+t_lst	*ft_createlst(t_lst **lstbegin, char **argv, int i, int n);
 
 #endif

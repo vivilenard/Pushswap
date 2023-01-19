@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:33:52 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:05:29 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 17:49:46 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_listsize(t_lst *lst);
 t_lst	*ft_newlist(char *content);
 t_lst	*ft_lstaddback(t_lst *lst, char *content);
 t_lst	*ft_lastlst(t_lst *lst);
-t_lst	*ft_onebeforelastlst(t_lst *begin);
+t_lst	*ft_onebeforelastlst(t_lst **begin);
 t_lst	*ft_smallestvalue(t_lst **lst);
 t_lst	*ft_smallestnode(t_lst *node);
 int		ft_addnode(t_lst **lst, t_lst *beginning, char **s, int n);

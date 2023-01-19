@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:24 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 15:06:40 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 18:23:13 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_deletelst(t_lst **lst)
 
 	while ((*lst))
 	{
-		node = ft_onebeforelastlst(*lst);
+		node = ft_onebeforelastlst(lst);
 		if (!node)
 			return (free(*lst));
 		free(ft_lastlst(*lst));

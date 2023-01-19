@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:51:25 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:12:45 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 18:25:11 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	reverserotate(t_lst **lst)
 	if (!lst || !(*lst)->next)
 		return ;
 	front = ft_lastlst(*lst);
-	onebeforelast = ft_onebeforelastlst(*lst);
+	onebeforelast = ft_onebeforelastlst(lst);
 	front->next = *lst;
 	onebeforelast->next = NULL;
 	*lst = front;

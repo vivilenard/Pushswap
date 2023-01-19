@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:21:15 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:19:27 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 17:23:38 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void	ft_clean_b(t_lst **stack_a, t_lst **stack_b)
 {
 	int		highestcontent;
 	int		schalter;
-	int		i;
 
-	i = 0;
 	schalter = -1;
 	highestcontent = ft_listsize(*stack_b);
 	while (ft_listsize(*stack_b) > 0)
@@ -68,7 +66,6 @@ void	ft_clean_b(t_lst **stack_a, t_lst **stack_b)
 		if ((ft_listsize(*stack_a) > 1)
 			&& (*stack_a)->content > (*stack_a)->next->content)
 			sa(stack_a);
-		i++;
 	}
 }
 
@@ -102,8 +99,5 @@ void	sort500(t_lst **stack_a, t_lst **stack_b, int listsize, int groupsize)
 	ft_push_to_b(stack_a, stack_b, amount, groupsize);
 	if (ft_listsize(*stack_a) == 3)
 		sort3(stack_a, listsize);
-	if (ft_listsize(*stack_b) < groupsize)
-		groupsize = ft_listsize(*stack_b);
 	ft_clean_b(stack_a, stack_b);
-	ft_deletelst(stack_b);
 }

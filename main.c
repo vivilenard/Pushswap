@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 15:06:30 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 18:33:42 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_lst	*ft_createlst(t_lst **lst, char **argv, int i, int n)
 		n = -1;
 		s = ft_split(argv[i], ' ');
 		if (!s[0])
-			return (stop(lst), ft_freedoublepointer(s), NULL);
+			return (stop(&beginning), ft_freedoublepointer(s), NULL);
 		if (!beginning)
 		{
 			if (ft_wronginput(beginning, s[0]) == 0)

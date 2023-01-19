@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_list.c                                       :+:      :+:    :+:   */
+/*   listutils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:36:03 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:13:38 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 18:26:10 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	ft_listsize(t_lst *lst)
 	return (len);
 }
 
-t_lst	*ft_onebeforelastlst(t_lst *begin)
+t_lst	*ft_onebeforelastlst(t_lst **begin)
 {
 	t_lst	*lst;
 
-	lst = begin;
+	lst = *begin;
 	if (!lst || ft_listsize(lst) < 2)
 		return (NULL);
 	while (lst->next->next != NULL)

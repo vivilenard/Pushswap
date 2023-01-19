@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:22:56 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 15:07:32 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 17:05:47 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,6 @@ t_lst	*ft_smallestvalue(t_lst **lst)
 	while (node)
 	{
 		if ((node->value < smallestnode->value) && node->content == 0)
-			smallestnode = node;
-		node = node->next;
-	}
-	return (smallestnode);
-}
-
-t_lst	*ft_smallestnode(t_lst *node)
-{
-	t_lst	*smallestnode;
-
-	smallestnode = node;
-	while (node)
-	{
-		if (node->content < smallestnode->content)
 			smallestnode = node;
 		node = node->next;
 	}

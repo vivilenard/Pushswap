@@ -6,23 +6,11 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:22:56 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:13:51 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:07:32 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
-
-int	ft_addnode(t_lst **lst, t_lst *beginning, char **s, int n)
-{
-	while (s[n])
-	{
-		if (ft_wronginput(beginning, s[n]) == 0)
-			return (ft_freedoublepointer(s), 0);
-		*lst = ft_lstaddback(*lst, s[n]);
-		n++;
-	}
-	return (1);
-}
 
 t_lst	*ft_smallestvalue(t_lst **lst)
 {
@@ -83,15 +71,4 @@ int	placeoflowestvalue(t_lst *node)
 		i++;
 	}
 	return (placeoflowestval + 1);
-}
-
-void	ft_printlst(t_lst *lst)
-{
-	ft_printf("---------\n");
-	while (lst)
-	{
-		ft_printf("_%d_ (%d)\n", lst->content, lst->value);
-		lst = lst->next;
-	}
-	ft_printf("---------\n");
 }

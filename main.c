@@ -6,24 +6,24 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 15:02:19 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:06:30 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_deletelst(t_lst **lst)
+int	ft_issorted(t_lst **lst)
 {
 	t_lst	*node;
 
-	while ((*lst))
+	node = *lst;
+	while (node->next != NULL)
 	{
-		node = ft_onebeforelastlst(*lst);
-		if (!node)
-			return (free(*lst));
-		free(ft_lastlst(*lst));
-		node->next = NULL;
+		if (node->content > node->next->content)
+			return (0);
+		node = node->next;
 	}
+	return (1);
 }
 
 void	ft_assignpositivenumbers(t_lst **lst)
@@ -68,20 +68,6 @@ t_lst	*ft_createlst(t_lst **lst, char **argv, int i, int n)
 		i++;
 	}
 	return (beginning);
-}
-
-int	ft_issorted(t_lst **lst)
-{
-	t_lst	*node;
-
-	node = *lst;
-	while (node->next != NULL)
-	{
-		if (node->content > node->next->content)
-			return (0);
-		node = node->next;
-	}
-	return (1);
 }
 
 int	main(int argc, char **argv)

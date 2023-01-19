@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:23:24 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:15:45 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:06:40 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ void	stop(t_lst **lst)
 {
 	ft_deletelst(lst);
 	ft_putstr_fd("Error\n", 2);
+}
+
+void	ft_deletelst(t_lst **lst)
+{
+	t_lst	*node;
+
+	while ((*lst))
+	{
+		node = ft_onebeforelastlst(*lst);
+		if (!node)
+			return (free(*lst));
+		free(ft_lastlst(*lst));
+		node->next = NULL;
+	}
 }
 
 int	ft_samevalue(t_lst *lst, char *s)

@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 21:42:01 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 11:09:19 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,43 +42,43 @@ void	ft_assignpositivenumbers(t_lst **lst)
 	}
 }
 
-t_lst	*ft_createlst(t_lst **lstbegin, char **argv)
+int	ft_addnode(t_lst **lst, char **s, int n)
 {
-	int		i;
-	int		n;
-	char	**s;
-	t_lst	*node;
+	while (s[++n])
+	{
+		if (ft_wronginput(*lst, s[n]) == 0)
+			return (ft_freedoublepointer(s), 0);
+		*lst = ft_lstaddback(*lst, s[n]);
+	}
+	return (1);
+}
 
-	i = 1;
+t_lst	*ft_createlst(t_lst **lst, char **argv, int i, int n)
+{
+	char	**s;
+	t_lst	*beginning;
+
 	while (argv[i])
 	{
-		n = 0;
+		n = -1;
 		s = ft_split(argv[i], ' ');
 		if (!s[0])
-			return (stop(lstbegin), ft_freedoublepointer(s), NULL);
-		if (!node)
+			return (stop(lst), ft_freedoublepointer(s), NULL);
+		if (!beginning)
 		{
-			if (ft_wronginput(node, s[n]) == 0)
+			if (ft_wronginput(beginning, s[0]) == 0)
 				return (ft_freedoublepointer(s), NULL);
-			node = ft_newlist(s[0]);
-			node->content = 0;
-			*lstbegin = node;
+			beginning = ft_newlist(s[0]);
+			*lst = beginning;
 			n++;
 		}
-		while (s[n])
-		{
-			if (ft_wronginput(*lstbegin, s[n]) == 0)
-				return (ft_freedoublepointer(s), NULL);
-			ft_lstaddback(node, s[n]);
-			node = node->next;
-			node->content = 0;
-			n++;
-		}
+		if (ft_addnode(lst, s, n) == 0)
+			return (NULL);
 		if (s)
 			ft_freedoublepointer(s);
 		i++;
 	}
-	return (*lstbegin);
+	return (beginning);
 }
 
 int	ft_issorted(t_lst **lst)
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	lst = NULL;
 	if (argc < 2)
 		return (0);
-	lst = ft_createlst(&lst, argv);
+	lst = ft_createlst(&lst, argv, 1, 0);
 	if (!lst)
 		return (0);
 	ft_assignpositivenumbers(&lst);
@@ -118,8 +118,6 @@ int	main(int argc, char **argv)
 		sort5(&lst);
 	else if (listsize <= 500)
 		sort500(&lst);
-	//system("leaks push_swap");
 	return (ft_deletelst(&lst), 0);
 }
-
 //Pfad: ~/Documents/coding/pushswap/push_swap

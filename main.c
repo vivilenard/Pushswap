@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:05:45 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 15:02:19 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,3 @@ int	main(int argc, char **argv)
 		sort500(&stack_a, &stack_b, listsize, 20);
 	return (ft_deletelst(&stack_a), 0);
 }
-//Pfad: ~/Documents/coding/ps/push_swap

@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:26:55 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 14:19:31 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:59:59 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	sort2(t_lst **lst)
 void	sort3(t_lst **lst, int listsize)
 {
 	if (listsize <= 2)
+	{
 		sort2(lst);
+		return ;
+	}
 	if (one(*lst) > two(*lst)
 		&& (two(*lst) > three(*lst) || three(*lst) > one(*lst)))
 		sa(lst);

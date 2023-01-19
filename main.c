@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:00:38 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 12:08:13 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:05:45 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@ void	ft_assignpositivenumbers(t_lst **lst)
 		smallestnode->content = i;
 		i++;
 	}
-}
-
-int	ft_addnode(t_lst **lst, t_lst *beginning, char **s, int n)
-{
-	while (s[n])
-	{
-		if (ft_wronginput(beginning, s[n]) == 0)
-			return (ft_freedoublepointer(s), 0);
-		*lst = ft_lstaddback(*lst, s[n]);
-		n++;
-	}
-	return (1);
 }
 
 t_lst	*ft_createlst(t_lst **lst, char **argv, int i, int n)
@@ -119,4 +107,4 @@ int	main(int argc, char **argv)
 		sort500(&stack_a, &stack_b, listsize, 20);
 	return (ft_deletelst(&stack_a), 0);
 }
-//Pfad: ~/Documents/coding/pushswap/push_swap
+//Pfad: ~/Documents/coding/ps/push_swap

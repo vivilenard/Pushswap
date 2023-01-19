@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:26:55 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 11:29:19 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 13:55:57 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,8 @@ void	ft_reduceto3(t_lst **stack_a, t_lst **stack_b)
 	}
 }
 
-void	sort5(t_lst **stack_a, int listsize)
+void	sort5(t_lst **stack_a, t_lst **stack_b, int listsize)
 {
-	t_lst	*imaginary;
-	t_lst	**stack_b;
-
-	imaginary = NULL;
-	stack_b = &imaginary;
 	ft_reduceto3(stack_a, stack_b);
 	sort3(stack_a, listsize);
 	pa(stack_b, stack_a);

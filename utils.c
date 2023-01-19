@@ -5,70 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 17:36:03 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/19 10:27:02 by vlenard          ###   ########.fr       */
+/*   Created: 2023/01/11 14:22:56 by vlenard           #+#    #+#             */
+/*   Updated: 2023/01/19 14:06:30 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-t_lst	*ft_newlist(char *content)
+int	ft_addnode(t_lst **lst, t_lst *beginning, char **s, int n)
 {
-	t_lst	*lst;
-
-	lst = (t_lst *)malloc(sizeof(*lst));
-	if (!lst)
-		return (NULL);
-	lst->value = ft_atoi(content);
-	lst->content = 0;
-	lst->next = NULL;
-	return (lst);
-}
-
-t_lst	*ft_lstaddback(t_lst *lst, char *content)
-{
-	t_lst	*new;
-
-	new = ft_newlist(content);
-	lst->next = new;
-	return (new);
-}
-
-t_lst	*ft_lastlst(t_lst *begin)
-{
-	t_lst	*lst;
-
-	lst = begin;
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
-
-int	ft_listsize(t_lst *lst)
-{
-	int	len;
-
-	len = 0;
-	while (lst != NULL)
+	while (s[n])
 	{
-		lst = lst->next;
-		len++;
+		if (ft_wronginput(beginning, s[n]) == 0)
+			return (ft_freedoublepointer(s), 0);
+		*lst = ft_lstaddback(*lst, s[n]);
+		n++;
 	}
-	return (len);
+	return (1);
 }
 
-t_lst	*ft_onebeforelastlst(t_lst *begin)
+t_lst	*ft_smallestvalue(t_lst **lst)
 {
-	t_lst	*lst;
+	t_lst	*smallestnode;
+	t_lst	*highestnode;
+	t_lst	*node;
 
-	lst = begin;
-	if (!lst || ft_listsize(lst) < 2)
-		return (NULL);
-	while (lst->next->next != NULL)
-		lst = lst->next;
-	return (lst);
+	node = *lst;
+	highestnode = node;
+	while (node)
+	{
+		if (node->value > highestnode->value)
+			highestnode = node;
+		node = node->next;
+	}
+	smallestnode = highestnode;
+	node = *lst;
+	while (node)
+	{
+		if ((node->value < smallestnode->value) && node->content == 0)
+			smallestnode = node;
+		node = node->next;
+	}
+	return (smallestnode);
+}
+
+t_lst	*ft_smallestnode(t_lst *node)
+{
+	t_lst	*smallestnode;
+
+	smallestnode = node;
+	while (node)
+	{
+		if (node->content < smallestnode->content)
+			smallestnode = node;
+		node = node->next;
+	}
+	return (smallestnode);
+}
+
+int	placeoflowestvalue(t_lst *node)
+{
+	t_lst	*lowestval;
+	int		i;
+	int		placeoflowestval;
+
+	lowestval = node;
+	placeoflowestval = -1;
+	i = 0;
+	while (node)
+	{
+		if (node->content < lowestval->content)
+		{
+			lowestval = node;
+			placeoflowestval = i;
+		}
+		node = node->next;
+		i++;
+	}
+	return (placeoflowestval + 1);
 }
 
 void	ft_printlst(t_lst *lst)

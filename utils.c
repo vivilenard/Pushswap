@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:36:03 by vlenard           #+#    #+#             */
-/*   Updated: 2023/01/18 21:38:22 by vlenard          ###   ########.fr       */
+/*   Updated: 2023/01/19 10:27:02 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ t_lst	*ft_newlist(char *content)
 	if (!lst)
 		return (NULL);
 	lst->value = ft_atoi(content);
+	lst->content = 0;
 	lst->next = NULL;
 	return (lst);
 }
 
-void	ft_lstaddback(t_lst *lst, char *content)
+t_lst	*ft_lstaddback(t_lst *lst, char *content)
 {
 	t_lst	*new;
 
 	new = ft_newlist(content);
 	lst->next = new;
+	return (new);
 }
 
 t_lst	*ft_lastlst(t_lst *begin)
